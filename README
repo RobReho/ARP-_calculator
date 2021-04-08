@@ -1,0 +1,18 @@
+Design and code a strange arithmetic integer calculator able to exdcute the 4 basic operations, as well as a compbined arithmetic expression.
+
+The structure of the calculator may seem bombastic, nevertheless is a simplified skeleton of real complex calculators.
+
+The calculator has a front end process F which parses commands of the following form (Oi is either P sum, M subtraction, T product, D division):
+
+O1 X Y  -->F executes a process that carries out the operation XO1Y (e.g., 3 * 7, written 3 T 7)) and returns the result and writes it in the shell window
+
+O1 X Y TO O2 Z K -->F executes a process that carries out the operation O1 then executes a second process that carries out the operation O2 whose input is the result of the first operation O1, and returns the result and writes in the shell window
+
+O1 X Y TO O2 Z K TO O3 H K... as the previous one, cascading the operations O1, O2, O3.....
+
+You can decide a maximum number of chained operations, not less than 4.
+
+-------------------------------------------------------------------------------
+to compile and execute:
+$make
+$./main 
