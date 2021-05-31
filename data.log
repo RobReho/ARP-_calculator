@@ -1,0 +1,267 @@
+1622397665 : 370621 :: main: signaling child process
+1622397665 : 370736 :: main: read fom fifo
+
+1622397670 : 772553 :: main: signaling child process
+1622397670 : 772611 :: main: read fom fifo
+
+1622397673 : 655527 :: main: signaling child process
+1622397673 : 655586 :: main: read fom fifo
+
+1622397676 : 170198 :: main: signaling child process
+1622397676 : 170273 :: main: read fom fifo
+
+1622397681 : 143237 :: main: signaling child process
+1622397681 : 143354 :: main: read fom fifo
+
+1622397684 : 9337 :: main: closing
+___________________________________
+1622397893 : 768541 :: sum: sum invoked - sum child running
+1622397893 : 869967 :: sum: write end FIFO closed, child returning 
+1622397897 : 129613 :: sum: sum invoked - sum child running
+1622397897 : 230954 :: sum: write end FIFO closed, child returning 
+1622397900 : 439874 :: sum: sum invoked - sum child running
+1622397900 : 540584 :: sum: write end FIFO closed, child returning 
+1622397905 : 936659 :: sum: sum invoked - sum child running
+1622397906 : 37800 :: sum: write end FIFO closed, child returning 
+1622397893 : 869718 :: main: signaling child process
+1622397893 : 869878 :: main: read fom fifo
+
+1622397897 : 230794 :: main: signaling child process
+1622397897 : 230919 :: main: read fom fifo
+
+1622397900 : 540368 :: main: signaling child process
+1622397900 : 540536 :: main: read fom fifo
+
+1622397906 : 37624 :: main: signaling child process
+1622397906 : 37764 :: main: read fom fifo
+
+1622397911 : 296338 :: main: signaling child process
+1622397911 : 296472 :: main: read fom fifo
+
+1622397914 : 540286 :: main: signaling child process
+1622397914 : 540434 :: main: read fom fifo
+
+1622397915 : 679382 :: main: closing
+___________________________________
+1622398304 : 496141 :: sum: invoked - sum child running
+1622398304 : 596696 :: sum: signal received, computing...
+
+1622398304 : 596785 :: sum: write end FIFO closed, child returning 
+1622398308 : 207332 :: pro: invoked - pro child running
+1622398308 : 207381 :: pro: waiting for signal
+
+1622398308 : 307728 :: pro: signal received
+ computing...
+
+1622398308 : 307748 :: pro: writing back
+
+1622398311 : 506562 :: pro: invoked - pro child running
+1622398311 : 506601 :: pro: waiting for signal
+
+1622398311 : 611836 :: pro: signal received
+ computing...
+
+1622398311 : 611854 :: pro: writing back
+
+1622398316 : 62906 :: pro: invoked - pro child running
+1622398316 : 62983 :: pro: waiting for signal
+
+1622398316 : 163566 :: pro: signal received
+ computing...
+
+1622398316 : 163592 :: pro: writing back
+
+1622398320 : 143035 :: sum: invoked - sum child running
+1622398320 : 243590 :: sum: signal received, computing...
+
+1622398320 : 243679 :: sum: write end FIFO closed, child returning 
+1622398334 : 274999 :: div: invoked - div child running
+1622398334 : 375587 :: div: signal received
+ computing...
+
+1622398341 : 185270 :: sub: invoked - sub child running
+1622398341 : 286065 :: sub: signal received
+ computing...
+
+1622398341 : 286159 :: sub: write end FIFO closed, child returning 
+1622398304 : 596607 :: main: signaling child process
+1622398304 : 596736 :: main: read fom fifo
+
+1622398308 : 307686 :: main: signaling child process
+1622398308 : 307769 :: main: read fom fifo
+
+1622398311 : 611800 :: main: signaling child process
+1622398311 : 611873 :: main: read fom fifo
+
+1622398316 : 163510 :: main: signaling child process
+1622398316 : 163618 :: main: read fom fifo
+
+1622398320 : 243534 :: main: signaling child process
+1622398320 : 243631 :: main: read fom fifo
+
+1622398334 : 375524 :: main: signaling child process
+1622398334 : 375627 :: main: read fom fifo
+
+1622398341 : 286001 :: main: signaling child process
+1622398341 : 286111 :: main: read fom fifo
+
+1622398343 : 193266 :: main: closing
+___________________________________
+1622398900 : 759341 :: sum: invoked - sum child running
+1622398900 : 759386 :: sum: waiting for signal
+1622398900 : 859938 :: sum: signal received, computing...
+
+1622398900 : 859946 :: sum: writing back
+1622398900 : 860079 :: sum: write end FIFO closed, child returning 
+1622398905 : 659139 :: sum: invoked - sum child running
+1622398905 : 659183 :: sum: waiting for signal
+1622398905 : 759549 :: sum: signal received, computing...
+
+1622398905 : 759557 :: sum: writing back
+1622398905 : 759633 :: sum: write end FIFO closed, child returning 
+1622398910 : 720222 :: sub: invoked - sub child running
+1622398910 : 720268 :: sub: waiting for signal
+1622398910 : 821366 :: sub: signal received, computing...
+
+1622398910 : 821376 :: sub: writing back
+1622398910 : 821458 :: sub: write end FIFO closed, child returning 
+1622398920 : 149573 :: sub: invoked - sub child running
+1622398920 : 149675 :: sub: waiting for signal
+1622398920 : 250459 :: sub: signal received, computing...
+
+1622398920 : 250467 :: sub: writing back
+1622398920 : 250555 :: sub: write end FIFO closed, child returning 
+1622398924 : 46556 :: pro: invoked - pro child running
+1622398924 : 46598 :: pro: waiting for signal
+1622398924 : 147008 :: pro: signal received, computing...
+1622398924 : 147017 :: pro: writing back
+1622398924 : 147096 :: pro: write end FIFO closed, child returning 
+1622398927 : 728922 :: pro: invoked - pro child running
+1622398927 : 728988 :: pro: waiting for signal
+1622398927 : 830790 :: pro: signal received, computing...
+1622398927 : 830808 :: pro: writing back
+1622398927 : 830974 :: pro: write end FIFO closed, child returning 
+1622398930 : 215741 :: div: invoked - div child running
+1622398930 : 215811 :: div: waiting for signal
+1622398930 : 316446 :: div: signal received, computing...
+1622398930 : 316455 :: div: writing back
+1622398930 : 316549 :: div: write end FIFO closed, child returning 
+1622398932 : 997324 :: div: invoked - div child running
+1622398932 : 997396 :: div: waiting for signal
+1622398933 : 97610 :: div: signal received, computing...
+1622398933 : 97615 :: div: writing back
+1622398933 : 97664 :: div: write end FIFO closed, child returning 
+1622398900 : 859846 :: main: signaling child process
+1622398900 : 860011 :: main: read fom fifo
+
+1622398905 : 759474 :: main: signaling child process
+1622398905 : 759588 :: main: read fom fifo
+
+1622398910 : 821302 :: main: signaling child process
+1622398910 : 821411 :: main: read fom fifo
+
+1622398920 : 250388 :: main: signaling child process
+1622398920 : 250507 :: main: read fom fifo
+
+1622398924 : 146943 :: main: signaling child process
+1622398924 : 147049 :: main: read fom fifo
+
+1622398927 : 830648 :: main: signaling child process
+1622398927 : 830875 :: main: read fom fifo
+
+1622398930 : 316335 :: main: signaling child process
+1622398930 : 316492 :: main: read fom fifo
+
+1622398933 : 97567 :: main: signaling child process
+1622398933 : 97633 :: main: read fom fifo
+
+1622398934 : 487727 :: main: closing
+___________________________________
+1622498484 : 38675 :: sum: invoked - sum child running
+1622498484 : 38690 :: sum: waiting for signal
+1622498484 : 138069 :: sum: signal received, computing...
+1622498484 : 138073 :: sum: writing back
+1622498484 : 138101 :: sum: write end FIFO closed, child returning 
+1622498484 : 138034 :: main: signaling child process
+1622498484 : 138080 :: main: read from fifo
+1622498488 : 378145 :: main: signaling child process
+1622498488 : 378217 :: main: Failed to read from FIFO
+1622498488 : 279270 :: sum: invoked - sum child running
+1622498488 : 279289 :: sum: waiting for signal
+1622498488 : 378871 :: sum: signal received, computing...
+1622498488 : 378876 :: sum: writing back
+1622498488 : 378893 :: sum: failed to write to FIFO
+1622498488 : 378894 :: sum: write end FIFO closed, child returning 
+1622498584 : 70389 :: sum: invoked - sum child running
+1622498584 : 70408 :: sum: waiting for signal
+1622498584 : 169217 :: sum: signal received, computing...
+1622498584 : 169225 :: sum: writing back
+1622498584 : 169263 :: sum: write end FIFO closed, child returning 
+1622498584 : 169144 :: main: signaling child process
+1622498584 : 169238 :: main: read from fifo
+1622498586 : 326015 :: main: signaling child process
+1622498586 : 326120 :: main: Failed to read from FIFO
+1622498586 : 226745 :: sum: invoked - sum child running
+1622498586 : 226761 :: sum: waiting for signal
+1622498586 : 328814 :: sum: signal received, computing...
+1622498586 : 328822 :: sum: writing back
+1622498586 : 328867 :: sum: failed to write to FIFO
+1622498586 : 328868 :: sum: write end FIFO closed, child returning 
+1622498699 : 204294 :: sum: invoked - sum child running
+1622498699 : 204310 :: sum: waiting for signal
+1622498699 : 303750 :: sum: signal received, computing...
+1622498699 : 303754 :: sum: writing back
+1622498699 : 303767 :: sum: write end FIFO closed, child returning 
+1622498699 : 303718 :: main: signaling child process
+1622498699 : 303758 :: main: read from fifo
+1622498702 : 498332 :: main: signaling child process
+1622498702 : 498427 :: main: Failed to read from FIFO
+1622498702 : 398905 :: sum: invoked - sum child running
+1622498702 : 398925 :: sum: waiting for signal
+1622498702 : 501132 :: sum: signal received, computing...
+1622498702 : 501140 :: sum: writing back
+1622498702 : 501194 :: sum: failed to write to FIFO
+1622498834 : 422424 :: sum: invoked - sum child running
+1622498834 : 422437 :: sum: waiting for signal
+1622498834 : 521369 :: sum: signal received, computing...
+1622498834 : 521377 :: sum: writing back
+1622498834 : 521413 :: sum: write end FIFO closed, child returning 
+1622498834 : 521291 :: main: signaling child process
+1622498834 : 521392 :: main: read from fifo
+1622498837 : 349290 :: main: signaling child process
+1622498837 : 349395 :: main: Failed to read from FIFO
+1622498837 : 250436 :: sum: invoked - sum child running
+1622498837 : 250464 :: sum: waiting for signal
+1622498837 : 350490 :: sum: signal received, computing...
+1622498837 : 350497 :: sum: writing back
+1622498837 : 350520 :: sum: failed to write to FIFO
+1622498923 : 765270 :: sum: invoked - sum child running
+1622498923 : 765290 :: sum: waiting for signal
+1622498923 : 864700 :: sum: signal received, computing...
+1622498923 : 864705 :: sum: writing back
+1622498923 : 864721 :: sum: write end FIFO closed, child returning 
+1622498925 : 624547 :: sum: invoked - sum child running
+1622498925 : 624565 :: sum: waiting for signal
+1622498925 : 723981 :: sum: signal received, computing...
+1622498925 : 723988 :: sum: writing back
+1622498925 : 724020 :: sum: write end FIFO closed, child returning 
+1622498928 : 279244 :: sum: invoked - sum child running
+1622498928 : 279258 :: sum: waiting for signal
+1622498928 : 379034 :: sum: signal received, computing...
+1622498928 : 379042 :: sum: writing back
+1622498928 : 379076 :: sum: write end FIFO closed, child returning 
+1622498930 : 642675 :: sum: invoked - sum child running
+1622498930 : 642696 :: sum: waiting for signal
+1622498930 : 741928 :: sum: signal received, computing...
+1622498930 : 741935 :: sum: writing back
+1622498930 : 741969 :: sum: write end FIFO closed, child returning 
+1622498923 : 864656 :: main: signaling child process
+1622498923 : 864711 :: main: read from fifo
+1622498925 : 723928 :: main: signaling child process
+1622498925 : 724000 :: main: read from fifo
+1622498928 : 378975 :: main: signaling child process
+1622498928 : 379055 :: main: read from fifo
+1622498930 : 741870 :: main: signaling child process
+1622498930 : 741949 :: main: read from fifo
+1622498937 : 487153 :: main: closing
+___________________________________

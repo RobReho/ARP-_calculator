@@ -29,15 +29,15 @@ int main(int argc, char *argv[]){
     signal(SIGUSR1, sig_handler);
     int a = atoi(argv[1]);
     int b = atoi(argv[2]);
-    int fdn = atoi(argv[3]);
+    int fdw = atoi(argv[3]);
     int ans;
     char * myfifo = "/tmp/myfifo";
 
-    fdn = open(myfifo,O_WRONLY);
+    /*fdn = open(myfifo,O_WRONLY);
     if(fdn == -1){
         perror("sum - failed to open FIFO\n");
         logprint("failed to open FIFO");
-    }
+    }*/
 
     logprint("waiting for signal");
     pause();    //wait for signal
@@ -45,11 +45,13 @@ int main(int argc, char *argv[]){
     ans = a + b;
     
     logprint("writing back");
-    if(write(fdn, &ans, sizeof(ans))==-1){
+    if(write(fdw, &ans, sizeof(ans))==-1){
         perror("sum - failed to write on FIFO\n");
         logprint("failed to write to FIFO");
+        close(fdw);
+        exit(0);
     }
-    close(fdn);
+    
     logprint("write end FIFO closed, child returning ");
 
 return 0;

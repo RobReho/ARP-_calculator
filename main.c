@@ -14,7 +14,8 @@ FILE *fp;
 int operation(char op, int a, int b);
 int result(char oper);
 pid_t op_child;
-int fdn, a, b;
+int a, b;
+int fd[2];
 char * myfifo = "/tmp/myfifo";
 
 void logprint(char msg[]){
@@ -29,7 +30,13 @@ int main(int argc, char *argv[]){
     fp  = fopen ("data.log", "a+");
     if (fp == NULL) perror("log file couldn't open\n");
 
-    mkfifo(myfifo, 0666);
+    //create unnamed pipe
+    if(pipe(fd)==-1){
+        perror("main: pipe opening failed\n");
+        logprint("pipe opening failed");
+        return -1;
+    }
+
     char oper;
     printf("insert commands in the form \nOp1 a b\nOp2 c\nOp3 d\n...\nwhere:\np = sum\nm = subtraction\nt = product\nd = division\ninser 'x' to close\n\n");
     
@@ -44,7 +51,8 @@ int main(int argc, char *argv[]){
         if(oper == 'x'){        //quit option
             logprint("closing\n___________________________________");
             printf("closing...\n");
-            close(fdn);     //close FIFO fd
+            close(fd[0]);     //close pipe fd
+            close(fd[1]);
             exit(0);
         }
         else{
@@ -60,15 +68,15 @@ int main(int argc, char *argv[]){
 //this function recognises the command and forks the appropriate process
 int operation(char op, int a, int b){
 
-    char a_[16], b_[16], fd[16];
+    char a_[16], b_[16], fdw[16];
     sprintf(a_,"%d",a); 
     sprintf(b_,"%d",b); 
-    sprintf(fd,"%d",fdn);
+    sprintf(fdw,"%d",fd[1]);
 
-    char *argv_p[]={"./sum",a_,b_,fd,(char*)NULL};
-    char *argv_m[]={"./sub",a_,b_,fd,(char*)NULL};
-    char *argv_t[]={"./pro",a_,b_,fd,(char*)NULL};
-    char *argv_d[]={"./div",a_,b_,fd,(char*)NULL};
+    char *argv_p[]={"./sum",a_,b_,fdw,(char*)NULL};
+    char *argv_m[]={"./sub",a_,b_,fdw,(char*)NULL};
+    char *argv_t[]={"./pro",a_,b_,fdw,(char*)NULL};
+    char *argv_d[]={"./div",a_,b_,fdw,(char*)NULL};
 
     switch(op){
     case 'p':       //sum operation
@@ -151,12 +159,15 @@ int result(char oper){
     int stat;
     int ans;
 
-    //open FIFO pipe
-    fdn = open(myfifo,O_RDONLY);
+    //close writing side of pipe
+    //close(fd[1]);
+
+    /*open FIFO pipe
+    fd = open(myfifo,O_RDONLY);
     if(fdn == -1){
         perror("sum - failed to open FIFO\n");
         logprint("sum - failed to open FIFO");
-    }
+    }*/
 
     usleep(100000);
 
@@ -164,18 +175,19 @@ int result(char oper){
     logprint("signaling child process");
     kill(op_child,SIGUSR1);
 
-    if(read(fdn, &ans, 80)==-1){    //read answer from FIFO
+    if(read(fd[0], &ans, 80)==-1){    //read answer from FIFO
         perror("main - Failed to read from FIFO");
         logprint("Failed to read from FIFO");
-        close(fdn);
+        close(fd[0]);
+        exit(0);
     }
     logprint("read from fifo");
 
     printf("%i %c %i = %i\n\n",a,oper,b,ans);
     a = ans;
-    close(fdn);
 
     waitpid(op_child, &stat, 0);  //waiting for child to return
+  
 
     if (stat == 1){      //Verify if child process is terminated without error
         printf("\nThe child process terminated with an error!.\n"); 
