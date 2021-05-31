@@ -16,7 +16,6 @@ m: div.c
 	gcc -o div div.c
 
 
-
 .PHONY: clean
 
 clean:
@@ -25,4 +24,5 @@ clean:
 		rm -f sub.o
 		rm -f pro.o
 		rm -f div.o
+
 
