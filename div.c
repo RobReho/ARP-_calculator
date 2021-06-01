@@ -7,50 +7,46 @@
 #include <sys/time.h>
 
 FILE *fp;
-void logprint(char msg[]){
+void logprint(char msg[],pid_t pid){
     struct timeval current_time;
     gettimeofday(&current_time, NULL);
-    fprintf(fp, "%li : %li :: div: %s\n",current_time.tv_sec,current_time.tv_usec,msg); 
+    fprintf(fp, "%li : %li :: main (%i): %s\n",current_time.tv_sec,current_time.tv_usec,pid,msg); 
     fflush(stdout);
 }
 
 void sig_handler(int signo)
 {
 	if(signo == SIGUSR1){
-		logprint("signal received, computing...");
+		logprint("signal received, computing...",getpid());
 	}
 }
 
 int main(int argc, char *argv[]){
     fp  = fopen ("data.log", "a+");
     if (fp == NULL) perror("log file couldn't open\n");
-    logprint("invoked - div child running");
+    logprint("invoked - div child running",getpid());
 
     signal(SIGUSR1, sig_handler);
     int a = atoi(argv[1]);
     int b = atoi(argv[2]);
-    int fdn = atoi(argv[3]);
+    int fdw = atoi(argv[3]);
     int ans;
     char * myfifo = "/tmp/myfifo";
-    
-    fdn = open(myfifo,O_WRONLY);
-    if(fdn == -1){
-        perror("div - failed to open FIFO\n");
-        logprint("failed to open FIFO");
-    }
 
-    logprint("waiting for signal");
+    logprint("waiting for signal",getpid());
     pause();    //wait for signal
 
     ans = a / b;
 
-    logprint("writing back");
-    if(write(fdn, &ans, sizeof(ans))==-1){
+    logprint("writing back",getpid());
+    if(write(fdw, &ans, sizeof(ans))==-1){
         perror("div - failed to write on FIFO\n");
-        logprint("failed to write on FIFO");
+        logprint("failed to write on FIFO",getpid());
+        close(fdw);
+        exit(1);
     }
-    close(fdn);
-    logprint("write end FIFO closed, child returning ");
+  
+    logprint("write end FIFO closed, child returning ",getpid());
 
 return 0;
 }

@@ -265,3 +265,94 @@ ___________________________________
 1622498930 : 741949 :: main: read from fifo
 1622498937 : 487153 :: main: closing
 ___________________________________
+1622571689 : 721436 :: sum: invoked - sum child running
+1622571689 : 721455 :: sum: waiting for signal
+1622571689 : 820492 :: sum: signal received, computing...
+1622571689 : 820500 :: sum: writing back
+1622571689 : 820535 :: sum: write end FIFO closed, child returning 
+1622571692 : 663953 :: sum: invoked - sum child running
+1622571692 : 663975 :: sum: waiting for signal
+1622571692 : 763937 :: sum: signal received, computing...
+1622571692 : 763951 :: sum: writing back
+1622571692 : 764016 :: sum: write end FIFO closed, child returning 
+1622571696 : 963122 :: div: invoked - div child running
+1622571696 : 963139 :: div: waiting for signal
+1622571697 : 62431 :: div: signal received, computing...
+1622571697 : 62444 :: div: writing back
+1622571697 : 62500 :: div: write end FIFO closed, child returning 
+1622571702 : 466885 :: div: invoked - div child running
+1622571702 : 466906 :: div: waiting for signal
+1622571702 : 567679 :: div: signal received, computing...
+1622571702 : 567686 :: div: writing back
+1622571702 : 567716 :: div: write end FIFO closed, child returning 
+1622571711 : 585403 :: sub: invoked - sub child running
+1622571711 : 585422 :: sub: waiting for signal
+1622571711 : 684999 :: sub: signal received, computing...
+
+1622571711 : 685010 :: sub: writing back
+1622571711 : 685054 :: sub: write end FIFO closed, child returning 
+1622571716 : 731993 :: pro: invoked - pro child running
+1622571716 : 732013 :: pro: waiting for signal
+1622571716 : 831263 :: pro: signal received, computing...
+1622571716 : 831271 :: pro: writing back
+1622571716 : 831307 :: pro: write end FIFO closed, child returning 
+1622571722 : 44583 :: pro: invoked - pro child running
+1622571722 : 44602 :: pro: waiting for signal
+1622571722 : 144848 :: pro: signal received, computing...
+1622571722 : 144861 :: pro: writing back
+1622571722 : 144921 :: pro: write end FIFO closed, child returning 
+1622571727 : 704112 :: sub: invoked - sub child running
+1622571727 : 704131 :: sub: waiting for signal
+1622571727 : 803747 :: sub: signal received, computing...
+
+1622571727 : 803755 :: sub: writing back
+1622571727 : 803792 :: sub: write end FIFO closed, child returning 
+1622571689 : 820411 :: main: signaling child process
+1622571689 : 820515 :: main: read from fifo
+1622571692 : 763820 :: main: signaling child process
+1622571692 : 763976 :: main: read from fifo
+1622571697 : 62332 :: main: signaling child process
+1622571697 : 62466 :: main: read from fifo
+1622571702 : 567622 :: main: signaling child process
+1622571702 : 567696 :: main: read from fifo
+1622571711 : 684922 :: main: signaling child process
+1622571711 : 685027 :: main: read from fifo
+1622571716 : 831194 :: main: signaling child process
+1622571716 : 831285 :: main: read from fifo
+1622571722 : 144702 :: main: signaling child process
+1622571722 : 144884 :: main: read from fifo
+1622571727 : 803682 :: main: signaling child process
+1622571727 : 803769 :: main: read from fifo
+1622571731 : 547255 :: main: closing
+___________________________________
+1622572551 : 80027 :: sum: invoked - sum child running
+1622572551 : 80046 :: sum: waiting for signal
+1622572551 : 180028 :: sum: signal received, computing...
+1622572551 : 180036 :: sum: writing back
+1622572551 : 180072 :: sum: write end FIFO closed, child returning 
+1622572555 : 854668 :: sub: invoked - sub child running
+1622572555 : 854687 :: sub: waiting for signal
+1622572555 : 954477 :: sub: signal received, computing...
+
+1622572555 : 954485 :: sub: writing back
+1622572555 : 954520 :: sub: write end FIFO closed, child returning 
+1622572559 : 76140 :: pro: invoked - pro child running
+1622572559 : 76158 :: pro: waiting for signal
+1622572559 : 175615 :: pro: signal received, computing...
+1622572559 : 175623 :: pro: writing back
+1622572559 : 175659 :: pro: write end FIFO closed, child returning 
+1622572562 : 81518 :: div: invoked - div child running
+1622572562 : 81536 :: div: waiting for signal
+1622572562 : 180760 :: div: signal received, computing...
+1622572562 : 180768 :: div: writing back
+1622572562 : 180803 :: div: write end FIFO closed, child returning 
+1622572551 : 179940 :: main (4955): signaling child process
+1622572551 : 180052 :: main (4955): read from pipe
+1622572555 : 954415 :: main (4955): signaling child process
+1622572555 : 954499 :: main (4955): read from pipe
+1622572559 : 175553 :: main (4955): signaling child process
+1622572559 : 175637 :: main (4955): read from pipe
+1622572562 : 180697 :: main (4955): signaling child process
+1622572562 : 180782 :: main (4955): read from pipe
+1622572563 : 966539 :: main (4955): closing
+___________________________________

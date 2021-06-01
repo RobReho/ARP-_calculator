@@ -18,10 +18,10 @@ int a, b;
 int fd[2];
 char * myfifo = "/tmp/myfifo";
 
-void logprint(char msg[]){
+void logprint(char msg[],pid_t pid){
     struct timeval current_time;
     gettimeofday(&current_time, NULL);
-    fprintf(fp, "%li : %li :: main: %s\n",current_time.tv_sec,current_time.tv_usec,msg); 
+    fprintf(fp, "%li : %li :: main (%i): %s\n",current_time.tv_sec,current_time.tv_usec,pid,msg); 
     fflush(stdout);
 }
     
@@ -33,12 +33,12 @@ int main(int argc, char *argv[]){
     //create unnamed pipe
     if(pipe(fd)==-1){
         perror("main: pipe opening failed\n");
-        logprint("pipe opening failed");
+        logprint("pipe opening failed",getpid());
         return -1;
     }
 
     char oper;
-    printf("insert commands in the form \nOp1 a b\nOp2 c\nOp3 d\n...\nwhere:\np = sum\nm = subtraction\nt = product\nd = division\ninser 'x' to close\n\n");
+    printf("insert commands in the form \nOp1 a b\nOp2 c\nOp3 d\n...\nwhere:\np = sum\nm = subtraction\nt = product\nd = division\ninsert 'x' to close\n\n");
     
     //get first command from stdin
     scanf("%c %i %i", &oper, &a, &b);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
         
         scanf("%c", &oper);
         if(oper == 'x'){        //quit option
-            logprint("closing\n___________________________________");
+            logprint("closing\n___________________________________",getpid());
             printf("closing...\n");
             close(fd[0]);     //close pipe fd
             close(fd[1]);
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
     
 }
 
-//this function recognises the command and forks the appropriate process
+//This function recognises the command and forks the appropriate process
 int operation(char op, int a, int b){
 
     char a_[16], b_[16], fdw[16];
@@ -90,8 +90,8 @@ int operation(char op, int a, int b){
         if (op_child == 0){ //child process: execute sum
             if(execvp(argv_p[0], argv_p) == -1){
                 perror("main - Exec_Error: exec sum");
-                logprint("main - Exec_Error: exec sum");
-                exit(-1);
+                logprint("Exec_Error: exec sum",getpid());
+                exit(1);
             }
         }else{
             result('+');
@@ -108,8 +108,8 @@ int operation(char op, int a, int b){
         if (op_child == 0){ //child process: execute subtraction
             if(execvp(argv_m[0], argv_d) == -1){
                 perror("main - Exec_Error: exec sub");
-                logprint("main - Exec_Error: exec sub");
-                exit(-1);
+                logprint("Exec_Error: exec sub",getpid());
+                exit(1);
             }
         }else
             result('-');
@@ -125,7 +125,7 @@ int operation(char op, int a, int b){
         if (op_child == 0){ //child process: execute product
             if(execvp(argv_t[0], argv_d) == -1){
                 perror("main - Exec_Error: exec pro");
-                logprint("main - Exec_Error: exec pro");
+                logprint("Exec_Error: exec pro",getpid());
                 exit(-1);
             }
         }else
@@ -142,7 +142,7 @@ int operation(char op, int a, int b){
         if (op_child == 0){ //child process: execute division
             if(execvp(argv_d[0], argv_d) == -1){
                 perror("main - Exec_Error: exec div");
-                logprint("main - Exec_Error: exec div");
+                logprint("Exec_Error: exec div",getpid());
                 exit(-1);
             }
         }else
@@ -153,35 +153,25 @@ int operation(char op, int a, int b){
     return 0;
 }
 
-//this function gets the result computed by the child processes through a FIFO pipe
+//This function gets the result computed by the child processes through an unnamed pipe
 int result(char oper){
     struct timeval timestamp;     
     int stat;
     int ans;
 
-    //close writing side of pipe
-    //close(fd[1]);
-
-    /*open FIFO pipe
-    fd = open(myfifo,O_RDONLY);
-    if(fdn == -1){
-        perror("sum - failed to open FIFO\n");
-        logprint("sum - failed to open FIFO");
-    }*/
-
     usleep(100000);
 
     //signal child process 
-    logprint("signaling child process");
+    logprint("signaling child process",getpid());
     kill(op_child,SIGUSR1);
 
     if(read(fd[0], &ans, 80)==-1){    //read answer from FIFO
-        perror("main - Failed to read from FIFO");
-        logprint("Failed to read from FIFO");
+        perror("main - Failed to read from pipe");
+        logprint("Failed to read from pipe",getpid());
         close(fd[0]);
         exit(0);
     }
-    logprint("read from fifo");
+    logprint("read from pipe",getpid());
 
     printf("%i %c %i = %i\n\n",a,oper,b,ans);
     a = ans;
@@ -191,6 +181,6 @@ int result(char oper){
 
     if (stat == 1){      //Verify if child process is terminated without error
         printf("\nThe child process terminated with an error!.\n"); 
-        logprint("The child process terminated with an error!.");
+        logprint("The child process terminated with an error!.",getpid());
     }
 }

@@ -7,24 +7,24 @@
 #include <sys/time.h>
 
 FILE *fp;
-void logprint(char msg[]){
+void logprint(char msg[],pid_t pid){
     struct timeval current_time;
     gettimeofday(&current_time, NULL);
-    fprintf(fp, "%li : %li :: sum: %s\n",current_time.tv_sec,current_time.tv_usec,msg); 
+    fprintf(fp, "%li : %li :: main (%i): %s\n",current_time.tv_sec,current_time.tv_usec,pid,msg); 
     fflush(stdout);
 }
   
 void sig_handler(int signo)
 {
 	if(signo == SIGUSR1){
-		logprint("signal received, computing...");
+		logprint("signal received, computing...",getpid());
 	}
 }
 
 int main(int argc, char *argv[]){
     fp  = fopen ("data.log", "a+");
     if (fp == NULL) perror("log file couldn't open\n");
-    logprint("invoked - sum child running");
+    logprint("invoked - sum child running",getpid());
 
     signal(SIGUSR1, sig_handler);
     int a = atoi(argv[1]);
@@ -33,26 +33,20 @@ int main(int argc, char *argv[]){
     int ans;
     char * myfifo = "/tmp/myfifo";
 
-    /*fdn = open(myfifo,O_WRONLY);
-    if(fdn == -1){
-        perror("sum - failed to open FIFO\n");
-        logprint("failed to open FIFO");
-    }*/
-
-    logprint("waiting for signal");
+    logprint("waiting for signal",getpid());
     pause();    //wait for signal
 
     ans = a + b;
     
-    logprint("writing back");
+    logprint("writing back",getpid());
     if(write(fdw, &ans, sizeof(ans))==-1){
         perror("sum - failed to write on FIFO\n");
-        logprint("failed to write to FIFO");
+        logprint("failed to write to FIFO",getpid());
         close(fdw);
-        exit(0);
+        exit(1);
     }
     
-    logprint("write end FIFO closed, child returning ");
+    logprint("write end FIFO closed, child returning ",getpid());
 
 return 0;
 }
