@@ -1,3 +1,7 @@
+# Branches
+## Main
+Contains the CALCULATOR project:
+
 Design and code a strange arithmetic integer calculator able to exdcute the 4 basic operations, as well as a compbined arithmetic expression.
 
 The structure of the calculator may seem bombastic, nevertheless is a simplified skeleton of real complex calculators.
@@ -16,3 +20,10 @@ You can decide a maximum number of chained operations, not less than 4.
 to compile and execute:
 $make
 $./main 
+
+## Unnamed_pipes
+Contains the same CALCULATOR exercise implemented with unnamed pipes.
+
+## Dining philosophers - pipes
+
+## Dining philosophers - sockets
